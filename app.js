@@ -1,65 +1,35 @@
-// const readline = require("readline").createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// });
+// use the browser for testing :)
 
-// readline.question(`Enter 3 numbers (space separated):?`, (name) => {
-//   console.log(`Hi ${name}!`);
-//   readline.close();
-// });
+let regex = /[ ,]+/; // for white spaces and comma separator
 
-let input = prompt("Enter 3 numbers: ").split(" ");
-let arrayInput = [...input];
+// User Input
+let input = prompt("Enter 3 numbers (use space or comma as separator): ").split(
+  regex
+);
 
-// init();
+// Tracking the inputted numbers
+let arrInput = [...input];
 
-// function init() {
-//   if (isNaN(input.join(""))) {
-//     console.log("Please input a number");
-//   } else if (arrayInput.length > 3) {
-//     console.log("input is over 3 items, start again1");
-//   } else {1
-//     sum(arrayInput[0], arrayInput[1], arrayInput[2]);
-//   }
-// }
+// initialized the 3 parameter variables
 let a, b, c;
 
+// Main function Sum
 const sum = (a, b, c) => {
-  a = parseInt(arrayInput[0]);
-  b = parseInt(arrayInput[1]);
-  c = parseInt(arrayInput[2]);
-
-  if (arrayInput.length === 3) {
-    console.log(a + b + c);
-  } else {
-    a = parseInt(arrayInput[0]);
-    b = parseInt(arrayInput[1]);
-    while (arrayInput.length < 3) {
-      filler(arrayInput.length);
-    }
-    c = parseInt(arrayInput[2]);
-    console.log(a + b + c);
+  while (arrInput.length < 3) {
+    filler(arrInput.length);
   }
-
-  //   if (arLen < 3) {
-  //     filler(arLen);
-  //     sum(arrayInput[0], arrayInput[1], arrayInput[2]);
-  //   } else {
-  //     console.log(a + b + c);
-  //   };
+  a = parseInt(arrInput[0]);
+  b = parseInt(arrInput[1]);
+  c = parseInt(arrInput[2]);
+  console.log(`sum is equal to: ${a + b + c}`);
 };
 
-const filler = (arLen) => {
-  let adder = prompt(`Enter ${3 - arLen} more number(s): `).split(" ");
-  arrayInput = arrayInput.concat(adder);
-  console.log(arrayInput);
+// Function Filler for Missing Parameters
+const filler = (arrLength) => {
+  let adder = prompt(`Enter ${3 - arrLength} more number(s): `).split(regex);
+  arrInput = arrInput.concat(adder);
+  console.log(arrInput);
+  100;
 };
 
 sum(a, b, c);
-// const sum = (a, b, c) => {
-//   if (arrayInput.length === 1) {
-//     arrayInput.push();
-//   } else {
-//     return a + b + c;
-//   }
-// };
